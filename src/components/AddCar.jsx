@@ -1,12 +1,15 @@
-// import { useContext } from "react";
-// import { AuthContext } from "./AuthProvider";
+import { useContext, useState } from "react";
+import { AuthContext } from "./AuthProvider";
 import axios from "axios";
 import {toast, Toaster} from "react-hot-toast";
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 
 const AddCar = () => {
+    const [startDate, setStartDate] = useState(new Date())
+    const { user } = useContext(AuthContext)
     const handleAddCar = async event => {
-        // const { user } = useContext(AuthContext)
         event.preventDefault()
 
         const form = event.target;
@@ -17,9 +20,10 @@ const AddCar = () => {
         const registration = form.registration.value;
         const features = form.features.value;
         const description = form.description.value;
-        const count = form.count.value;
         const photo = form.photo.value;
         const location = form.location.value;
+        const email = form.email.value;
+        const date = startDate
 
         const formData = {
             model,
@@ -28,12 +32,19 @@ const AddCar = () => {
             registration,
             features,
             description,
-            count: 0,
             photo,
             location,
-            date: 12/12/2024,
-            // email: user?.email
+            date,
+            count: 0,
+            rental: {
+                email,
+                name:user?.displayName,
+                photo:user?.photoURL
+            }
         }
+ 
+        // console.log(formData)
+
         try{
           await axios.post(`${import.meta.env.VITE_API_URL}/add-car`, formData)
         //   console.log(data)
@@ -91,12 +102,6 @@ const AddCar = () => {
          </div>
          <div className="form-control w-11/12 mx-auto">
             <label className="label">
-              <span className="label-text font-semibold">Booking Count</span>
-            </label>
-            <input type="text" name="count" placeholder="Count : 0" className="input input-bordered" required />
-         </div>
-         <div className="form-control w-11/12 mx-auto">
-            <label className="label">
               <span className="label-text font-semibold">Image Url</span>
             </label>
             <input type="string" name="photo" placeholder="Photo Url" className="input input-bordered" required />
@@ -106,9 +111,29 @@ const AddCar = () => {
               <span className="label-text font-semibold">Location</span>
             </label>
             <input type="text" name="location" placeholder="Write your Location" className="input input-bordered" required />
+            
          </div>
-         <div className="flex justify-center">
-            <input type="submit" value="Add Car" className="btn bg-yellow-600 text-white mb-5 mt-3"></input>
+         <div className="hidden form-control w-11/12 mx-auto">
+            <label className="label">
+              <span className="label-text font-semibold">email</span>
+            </label>
+            <input type="email" name="email" defaultValue={user.email}
+            disabled={true}
+            placeholder="email" className="input input-bordered" required />
+         </div>
+         <div className="flex justify-between mt-2">
+             <div className="mt-2 mx-8">
+                
+                <DatePicker
+                  className='border p-2 rounded-md'
+                  selected={startDate}
+                  onChange={date => setStartDate(date)}
+                 />
+                 <label className="ml-1">date</label>
+             </div>
+             <div className="mr-10">
+                  <input type="submit" value="Add Car" className="btn bg-yellow-600 text-white mb-5 mt-3"></input>
+             </div>
          </div>
        </form>
         
