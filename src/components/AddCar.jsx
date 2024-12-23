@@ -31,7 +31,7 @@ const AddCar = () => {
             count: 0,
             photo,
             location,
-            date: 12/12/202,
+            date: 12/12/2024,
             // email: user?.email
         }
         try{

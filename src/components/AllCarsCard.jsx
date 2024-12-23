@@ -29,7 +29,7 @@ const AllCarsCard = ({ car }) => {
     <p className='font-semibold'>Features: {features}</p>
     <p className='font-semibold'>Posted Date:</p>
     <div className="card-actions justify-center">
-      <Link to="/car-details" className="btn">Book Now</Link>
+      <Link to="/" className="btn">Book Now</Link>
     </div>
   </div>
 </div>

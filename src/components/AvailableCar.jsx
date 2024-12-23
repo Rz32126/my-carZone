@@ -12,7 +12,7 @@ const AvailableCar = () => {
         const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/cars`)
         setCars(data)
     }
-    console.log(cars)
+
     return (
         <div>
             <div className='flex flex-col md:flex-row justify-center items-center gap-5 mt-4 mb-5'>
