@@ -1,6 +1,7 @@
 // import { useContext } from "react";
 // import { AuthContext } from "./AuthProvider";
 import axios from "axios";
+import {toast, Toaster} from "react-hot-toast";
 
 
 const AddCar = () => {
@@ -29,11 +30,20 @@ const AddCar = () => {
             description,
             count: 0,
             photo,
-            location 
+            location,
+            date: 12/12/202,
+            // email: user?.email
         }
-        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/add-car`, formData)
-        console.log(data)
-
+        try{
+          await axios.post(`${import.meta.env.VITE_API_URL}/add-car`, formData)
+        //   console.log(data)
+          form.reset()
+          toast.success('Car added Successfully!!!')
+        } catch (err) {
+          console.log(err)
+          toast.error(err.message || 'An error adding the car!')
+        }
+  
     }    
     return (
         <div className="lg:w-7/12 bg-purple-400 mx-auto py-2">
@@ -102,7 +112,7 @@ const AddCar = () => {
          </div>
        </form>
         
-    
+    <Toaster></Toaster>
 
         </div>
     );

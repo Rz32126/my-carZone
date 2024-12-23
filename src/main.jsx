@@ -16,6 +16,7 @@ import AuthProvider from './components/AuthProvider.jsx';
 import MyCar from './components/MyCar.jsx';
 import AddCar from './components/AddCar.jsx';
 import MyBooking from './components/MyBooking.jsx';
+import CarDetails from './components/CarDetails.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: '/my-booking',
         element: <MyBooking></MyBooking>
+      },
+      {
+        path: '/car-details',
+        element: <CarDetails></CarDetails>
       },
 
     ]

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+// import { format } from 'date-fns';
 
 const AllCarsCard = ({ car }) => {
     const {
@@ -9,7 +11,8 @@ const AllCarsCard = ({ car }) => {
         features,
         description,
         photo,
-        location} = car || {}
+        location,
+        date } = car || {}
     return (
         <div>
             <div className="card card-compact bg-base-100 shadow-md border border-blue-200">
@@ -24,8 +27,9 @@ const AllCarsCard = ({ car }) => {
     <p className='font-semibold'>Price Per Day: ${price}</p>
     <p className='font-semibold'>Availability: {available}</p>
     <p className='font-semibold'>Features: {features}</p>
+    <p className='font-semibold'>Posted Date:</p>
     <div className="card-actions justify-center">
-      <button className="btn">Book Now</button>
+      <Link to="/car-details" className="btn">Book Now</Link>
     </div>
   </div>
 </div>
