@@ -1,9 +1,23 @@
-
+import { useContext } from "react";
+import { FaCarSide } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 
 const Navbar = () => {
+
+  const { user, logOut } = useContext(AuthContext)
+  const handleLogOut = () => {
+    logOut()
+    .then(() => {
+      console.log('log out')
+    })
+    .catch(error => {
+      console.log('failed')
+    })
+  }
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-blue-100">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -22,40 +36,35 @@ const Navbar = () => {
       </div>
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li><a>Item 1</a></li>
-        <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
-        <li><a>Item 3</a></li>
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow font-semibold text-blue-950">
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/available-car">Available Cars</Link></li>
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <a className="btn btn-ghost lg:text-xl text-lime-500 lg:font-bold"><span className="text-blue-600 lg:text-3xl lg:mr-4"><FaCarSide /></span>CAR_RENT_ZONE</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
+    <ul className="menu menu-horizontal px-1 font-semibold text-blue-900">
+      <li><Link to="/">Home</Link></li>
+      <li><Link to="/available-car">Available Cars</Link></li>
     </ul>
   </div>
   <div className="navbar-end">
-  <div className="form-control">
-      <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
-    </div>
-    <a className="btn">Button</a>
+    {
+      user ? <>
+      <div>
+        <ul className="lg:flex gap-4 font-semibold text-lime-600">
+        <li><Link to="/add-car">Add Cars</Link></li>
+        <li><Link to="/my-car">My Cars</Link></li>
+        <li><Link to="/my-booking">My Bookings</Link></li>
+        </ul>
+      </div>
+      <button onClick={handleLogOut} className="ml-4 btn bg-red-300">Log out</button>
+      </> : <>
+      <Link to="/login" className="btn bg-lime-300">Login</Link>
+      </>
+    }
+    
   </div>
 </div>
         </div>
