@@ -4,6 +4,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { AuthContext } from "./AuthProvider";
 import axios from "axios";
 import { format } from "date-fns";
+import {toast, Toaster} from "react-hot-toast";
 
 
 
@@ -17,7 +18,37 @@ const MyCar = () => {
         const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/cars/${user?.email}`)
         setCars(data)
     }
-    console.log(cars)
+    const handleDelete = async id => {
+        try{
+          const {data} = await axios.delete(`${import.meta.env.VITE_API_URL}/car/${id}`)
+          fetchAllCars()
+          toast.success('Car Deleted Successfully!!!')
+        } catch (err){
+          toast.error(err.message)
+        }
+    }
+
+    const toastDelete = (id) => {
+      toast(
+        (t) => (
+          <div className='flex gap-3 items-center'>
+            <div><p>
+              Are you <b>Sure?</b>
+                </p>
+            </div>
+            <div>
+              <button className='bg-red-600 text-white px-3 py-1 rounded-md'
+               onClick={() => {
+              handleDelete(id)
+              toast.dismiss(t.id)}}>Yes</button>
+              <button className='bg-green-600 ml-3 text-white px-3 py-1 rounded-md' onClick={() => toast.dismiss(t.id)}>Cancel</button>
+            </div>
+            
+          </div>
+        ),
+      );
+    }
+
     return (
         <div>
             <div className="overflow-x-auto mt-5 w-11/12 mx-auto bg-lime-200 mb-5">
@@ -50,18 +81,19 @@ const MyCar = () => {
             <td>
               {car.model}
             </td>
-            <td>{car.price}</td>
+            <td>$ {car.price}</td>
             <td>{car.available}</td>
             <td>{format(new Date(car.date), 'P')}</td>
             <th>
               <button className="btn text-orange-400 text-xl mr-2"><FaRegEdit /></button>
-              <button className="btn text-red-500 text-xl"><RiDeleteBin6Line /></button>
+              <button onClick={() => toastDelete(car._id)} className="btn text-red-500 text-xl"><RiDeleteBin6Line /></button>
             </th>
           </tr>)
      }
     </tbody>
   </table>
 </div>
+  <Toaster></Toaster>
         </div>
     );
 };
