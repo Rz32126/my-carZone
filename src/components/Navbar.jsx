@@ -41,7 +41,7 @@ const Navbar = () => {
         <li><Link to="/available-car">Available Cars</Link></li>
       </ul>
     </div>
-    <a className="btn btn-ghost lg:text-xl text-lime-500 lg:font-bold"><span className="text-blue-600 lg:text-3xl lg:mr-4"><FaCarSide /></span>CAR_RENT_ZONE</a>
+    <a className="btn btn-ghost lg:text-xl text-blue-900 lg:font-bold"><span className="text-blue-600 lg:text-3xl lg:mr-4"> <img className='w-12 h-12' src="https://i.ibb.co.com/qDDHcwC/Screenshot-2024-12-24-223953.png"/></span><span className="hidden lg:block">CAR_RENT_ZONE</span></a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 font-semibold text-blue-900">
