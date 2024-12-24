@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
-import toast from 'react-hot-toast'
+import {toast, Toaster} from "react-hot-toast";
 import { AuthContext } from './AuthProvider'
 const Login = () => {
   const { signIn, signInWithGoogle } = useContext(AuthContext)
@@ -119,6 +119,7 @@ const Login = () => {
             </Link>
           </div>
         </div>
+        <Toaster></Toaster>
     </div>
   )
 }

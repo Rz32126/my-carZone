@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from './AuthProvider'
-import toast from 'react-hot-toast'
+import {toast, Toaster} from "react-hot-toast";
 
 const Registration = () => {
   const navigate = useNavigate()
@@ -164,6 +164,7 @@ const Registration = () => {
               Already Have Account <span className='text-red-800 ml-3'>Login Here</span>
             </Link>
       </div>
+      <Toaster></Toaster>
     </div>
   )
 }

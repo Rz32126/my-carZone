@@ -5,6 +5,7 @@ import { AuthContext } from "./AuthProvider";
 import axios from "axios";
 import { format } from "date-fns";
 import {toast, Toaster} from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 
 
@@ -85,7 +86,7 @@ const MyCar = () => {
             <td>{car.available}</td>
             <td>{format(new Date(car.date), 'P')}</td>
             <th>
-              <button className="btn text-orange-400 text-xl mr-2"><FaRegEdit /></button>
+            <Link to={`/update/${car._id}`}><button className="btn text-orange-400 text-xl mr-2"><FaRegEdit /></button></Link>
               <button onClick={() => toastDelete(car._id)} className="btn text-red-500 text-xl"><RiDeleteBin6Line /></button>
             </th>
           </tr>)

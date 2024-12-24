@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const Offer = () => {
@@ -15,7 +16,9 @@ const Offer = () => {
                 <h2 className="card-title text-yellow-300 font-serif text-2xl ">Get 15% off for weekend rentals!</h2>
                 <p>Luxury cars at $99/day this holiday season!</p>
              <div className="card-actions justify-end">
-               <button className="btn bg-yellow-200">Learn More</button>
+               <Link to="/available-car">
+                  <button className="btn bg-yellow-200">Learn More</button>
+               </Link>
             </div>
             </div>
             </div>
@@ -29,7 +32,9 @@ const Offer = () => {
                 <h2 className="card-title text-yellow-300 font-serif text-2xl">Get 25% off for weekend rentals!</h2>
                 <p>Luxury cars at $199/day this holiday season!</p>
              <div className="card-actions justify-end">
-               <button className="btn bg-yellow-200">Learn More</button>
+             <Link to="/available-car">
+                  <button className="btn bg-yellow-200">Learn More</button>
+               </Link>
             </div>
             </div>
             </div>

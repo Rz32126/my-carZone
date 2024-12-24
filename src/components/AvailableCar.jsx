@@ -12,6 +12,7 @@ const AvailableCar = () => {
         const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/cars`)
         setCars(data)
     }
+    // console.log(cars)
 
     return (
         <div>

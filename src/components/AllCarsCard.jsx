@@ -4,6 +4,7 @@ import { format } from 'date-fns';
 
 const AllCarsCard = ({ car }) => {
     const {
+        _id,
         model,
         price,
         available,
@@ -27,7 +28,7 @@ const AllCarsCard = ({ car }) => {
     <p className='font-semibold'>Features:   {features}</p>
     <p className='font-semibold'>Posted Date:  {format(new Date(date), 'P')}</p>
     <div className="card-actions justify-center">
-      <Link to="/car-details" className="btn bg-blue-400 text-yellow-300">Book Now</Link>
+      <Link to={`/car-details/${_id}`} className="btn bg-blue-400 text-yellow-300">Book Now</Link>
     </div>
   </div>
 </div>
