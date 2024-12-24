@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import {toast, Toaster} from "react-hot-toast";
 import { useParams } from 'react-router-dom';
 
 const CarDetails = () => {
+//   const navigate = useNavigate()
   const { id } = useParams();
   const [car, setCar] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false); 
@@ -16,7 +18,7 @@ const CarDetails = () => {
     setCar(data);
   };
 
-  console.log(car);
+//   console.log(car);
 
   const {
     model,
@@ -25,11 +27,43 @@ const CarDetails = () => {
     features,
     photo,
     description,
+    count,
+    date
   } = car || {};
 
   const openModal = () => setIsModalOpen(true);
 
   const closeModal = () => setIsModalOpen(false);
+
+  const handleClick = async () => {
+    try {
+        const bookingData = {
+          model,
+          price,
+          available,
+          features,
+          description,
+          count,
+          date,
+          carId: id, 
+        };
+        // console.log(bookingData)
+    
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/book-car`, bookingData);
+    
+        if (response.status === 200) {
+          toast.success("Booking confirmed!");
+          closeModal(); 
+        //   navigate('/my-booking')
+        } else {
+          alert("Booking failed. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error booking car:", error);
+        alert("Something went wrong. Please try again later.");
+      }
+    };
+  
 
   return (
     <div>
@@ -46,6 +80,7 @@ const CarDetails = () => {
           <p className='font-semibold text-xl'>Price Per Day: ${price}</p>
           <p className='font-semibold text-xl'>Availability: {available}</p>
           <p className='font-semibold text-xl'>Features: {features}</p>
+          {/* <p className='font-semibold text-xl'>Count: {count}</p> */}
           <p className='font-semibold text-xl'>Description: {description}</p>
           <div className="card-actions justify-end">
             <button className="btn bg-lime-400" onClick={openModal}>Book Now</button>
@@ -68,11 +103,12 @@ const CarDetails = () => {
               >
                 Close
               </button>
-              <button className="btn bg-lime-400 text-white">Confirm Booking</button>
+              <button onClick={handleClick} className="btn bg-lime-400 text-white">Confirm Booking</button>
             </div>
           </div>
         </div>
       )}
+      <Toaster></Toaster>
     </div>
   );
 };
