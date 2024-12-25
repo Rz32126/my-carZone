@@ -71,7 +71,7 @@ const UpdateCar = () => {
   
     } 
     return (
-        <div className="lg:w-7/12 bg-gray-200 mx-auto py-2 mt-5 mb-4">
+        <div className="lg:w-7/12 bg-gray-400 mx-auto py-2 mt-5 mb-4">
         <h1 className="text-2xl mt-7 font-bold text-center">Update Your Car</h1>  
        <form onSubmit={handleAddCar}>
          <div className="form-control w-11/12 mx-auto">

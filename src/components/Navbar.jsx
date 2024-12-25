@@ -53,10 +53,10 @@ const Navbar = () => {
     {
       user ? <>
       <div>
-        <ul className="lg:flex gap-4 font-semibold text-lime-600">
-        <li><Link to="/add-car">Add Cars</Link></li>
-        <li><Link to="/my-car">My Cars</Link></li>
-        <li><Link to="/my-booking">My Bookings</Link></li>
+        <ul className="lg:flex gap-3">
+        <li className="btn text-green-800 bg-blue-100"><Link to="/add-car">Add Cars</Link></li>
+        <li className="btn text-green-800 bg-blue-100"><Link to="/my-car">My Cars</Link></li>
+        <li className="btn text-green-800 bg-blue-100"><Link to="/my-booking">My Bookings</Link></li>
         </ul>
       </div>
       <button onClick={handleLogOut} className="ml-4 btn bg-red-300">Log out</button>

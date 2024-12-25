@@ -52,6 +52,7 @@ const MyCar = () => {
 
     return (
         <div>
+          <h1 className="text-center font-bold text-2xl mt-3">Your Car is very near to your Door</h1>
             <div className="overflow-x-auto mt-5 w-11/12 mx-auto bg-lime-200 mb-5">
   <table className="table">
     {/* head */}
