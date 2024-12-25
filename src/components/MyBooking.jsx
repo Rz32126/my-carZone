@@ -142,10 +142,9 @@ const MyBooking = () => {
           </tbody>
         </table>
       </div>
-       {/* Rechart chart*/}
        {cars.length > 0 && (
         <div className="mt-10">
-          <h2 className="text-xl text-center mb-5">Price Compare of your Bookings</h2>
+          <h2 className="text-xl font-semibold text-center mb-5">Chart: Daily Rental Price</h2>
           <ResponsiveContainer width="90%" height={200}>
             <BarChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
