@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import {toast, Toaster} from "react-hot-toast";
 import { AuthContext } from './AuthProvider'
+import axios from 'axios';
 const Login = () => {
   const { signIn, signInWithGoogle } = useContext(AuthContext)
   const navigate = useNavigate()

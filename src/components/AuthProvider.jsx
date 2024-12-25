@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from 'firebase/auth'
 import auth from '../firebase/firebase.config'
+import axios from 'axios'
 
 export const AuthContext = createContext(null)
 const googleProvider = new GoogleAuthProvider()
@@ -47,9 +48,13 @@ const AuthProvider = ({ children }) => {
 
   
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      setUser(currentUser)
-      // console.log(currentUser)
+    const unsubscribe = onAuthStateChanged(auth, async currentUser => {
+      console.log(currentUser)
+      if(currentUser?.email) {
+        setUser(currentUser)
+        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{email: currentUser?.email})
+        console.log(data)
+      }
       setLoading(false)
     })
     return () => {
