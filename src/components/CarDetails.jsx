@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {toast, Toaster} from "react-hot-toast";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const CarDetails = () => {
-//   const navigate = useNavigate()
+  const navigate = useNavigate()
   const { id } = useParams();
   const [car, setCar] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false); 
@@ -38,11 +38,10 @@ const CarDetails = () => {
   const handleClick = async () => {
     try {
         const bookingData = {
+          photo,
           model,
           price,
           available,
-          features,
-          description,
           count,
           date,
           carId: id, 
@@ -54,7 +53,7 @@ const CarDetails = () => {
         if (response.status === 200) {
           toast.success("Booking confirmed!");
           closeModal(); 
-        //   navigate('/my-booking')
+          navigate('/available-car')
         } else {
           alert("Booking failed. Please try again.");
         }
@@ -70,7 +69,7 @@ const CarDetails = () => {
       <div className="card card-compact bg-base-100 shadow-md border border-red-300 mt-7 mb-7">
         <figure>
           <img
-            className='w-10/12 mx-auto h-72 rounded-md mt-2'
+            className='w-10/12 mx-auto h-72 rounded-md mt-2 object-cover'
             src={photo}
             alt="Cars"
           />
