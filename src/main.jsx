@@ -18,6 +18,7 @@ import AddCar from './components/AddCar.jsx';
 import MyBooking from './components/MyBooking.jsx';
 import CarDetails from './components/CarDetails.jsx';
 import UpdateCar from './components/UpdateCar.jsx';
+import PrivetRoute from './components/PrivetRoute.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,15 +42,27 @@ const router = createBrowserRouter([
       },
       {
         path: '/my-car',
-        element: <MyCar></MyCar>
+        element: (
+          <PrivetRoute>
+            <MyCar></MyCar>
+          </PrivetRoute>
+        )
       },
       {
         path: '/add-car',
-        element: <AddCar></AddCar>
+        element: (
+          <PrivetRoute>
+            <AddCar></AddCar>
+          </PrivetRoute>
+        )
       },
       {
         path: '/my-booking',
-        element: <MyBooking></MyBooking>
+        element: (
+          <PrivetRoute>
+             <MyBooking></MyBooking>
+          </PrivetRoute>
+        )
       },
       {
         path: '/car-details/:id',

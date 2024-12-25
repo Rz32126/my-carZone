@@ -4,7 +4,7 @@ const ExtraSection = () => {
     return (
         <div>
             <h1 className="text-2xl font-bold text-center mt-5 mb-3">Explore Our Other Exclusive Services</h1>
-            <div className="hero bg-pink-300 mb-4 w-9/12 mx-auto">
+            <div className="hero bg-blue-300 mb-4 w-9/12 mx-auto">
   <div className="hero-content flex-col lg:flex-row-reverse justify-center">
    <div className="flex-1">
    <img
@@ -21,7 +21,7 @@ const ExtraSection = () => {
       <p className="py-6">
        We are happily announced that we add some new services for your betterment like hotel booking, guide and many more with travel related.
       </p>
-      <button className="btn bg-purple-500">Explore More</button>
+      <button className="btn bg-gray-300">Explore More</button>
     </div>
   </div>
 </div>
