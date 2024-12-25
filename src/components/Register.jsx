@@ -21,10 +21,6 @@ const Registration = () => {
       console.log(result)
       toast.success('Register Successfully')
       navigate('/login')
-    //   await updateUserProfile(name, photo)
-    //   setUser({ ...result.user, photoURL: photo, displayName: name })
-    //   toast.success('Signup Successful')
-    //   navigate('/')
     } catch (err) {
       console.log(err)
       toast.error(err?.message)

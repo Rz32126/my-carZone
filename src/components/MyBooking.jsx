@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { toast, Toaster } from "react-hot-toast";
-import DatePicker from "react-datepicker";  // Importing DatePicker
-import "react-datepicker/dist/react-datepicker.css";  // Import styles for the date picker
+import DatePicker from "react-datepicker"; 
+import "react-datepicker/dist/react-datepicker.css";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'; 
+
 
 const MyBooking = () => {
   const [cars, setCars] = useState([]);
-  const [editingDate, setEditingDate] = useState(null); // To track the car being edited
-  const [newDate, setNewDate] = useState(null); // New date selected by the user
+  const [editingDate, setEditingDate] = useState(null); 
+  const [newDate, setNewDate] = useState(null);
 
   useEffect(() => {
     fetchAllCars();
@@ -48,21 +50,25 @@ const MyBooking = () => {
     );
   };
 
-  // Function to handle date update
+  
   const handleDateUpdate = async (id) => {
     if (!newDate) return toast.error("Please select a date.");
 
     try {
-      // Send PUT request to update the booking date
+     
       await axios.put(`${import.meta.env.VITE_API_URL}/booking/${id}`, { date: newDate });
 
-      fetchAllCars();  // Re-fetch the updated bookings
+      fetchAllCars(); 
       toast.success('Booking Date Updated Successfully!');
-      setEditingDate(null);  // Close the date picker
+      setEditingDate(null);  
     } catch (err) {
-      toast.error("Error updating date: " + err.message);
+      toast.error("Error update the date: " + err.message);
     }
   };
+  const chartData = cars.map(car => ({
+    model: car.model,
+    price: car.price,
+  }));
 
   return (
     <div>
@@ -136,6 +142,22 @@ const MyBooking = () => {
           </tbody>
         </table>
       </div>
+       {/* Rechart chart*/}
+       {cars.length > 0 && (
+        <div className="mt-10">
+          <h2 className="text-xl text-center mb-5">Price Compare of your Bookings</h2>
+          <ResponsiveContainer width="90%" height={200}>
+            <BarChart data={chartData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="model" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="price" fill="#32CD32" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      )}
       <Toaster />
     </div>
   );

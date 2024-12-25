@@ -5,13 +5,16 @@ import AllCarsCard from "./AllCarsCard";
 
 const AvailableCar = () => {
     const [cars, setCars] = useState([])
+    const [search, setSearch] = useState('')
+    const [sort, setSort] = useState('')
     useEffect(() => {
+        const fetchAllCars = async () => {
+            const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/all-cars?search=${search}&sort=${sort}`)
+            setCars(data)
+        }
         fetchAllCars()
-    }, [])
-    const fetchAllCars = async () => {
-        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/cars`)
-        setCars(data)
-    }
+    }, [search,sort])
+
     // console.log(cars)
 
     return (
@@ -24,6 +27,7 @@ const AvailableCar = () => {
                 className='px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
                 type='text'
                 name='search'
+                onChange={e => setSearch(e.target.value)}
                 placeholder='Enter Car Model'
               />
 
@@ -34,8 +38,9 @@ const AvailableCar = () => {
              </form>
              <div>
                  <select
-                    name='category'
-                    id='category'
+                    name='sort'
+                    id='sort'
+                    onChange={e => setSort(e.target.value)}
                     className='border p-4 rounded-md'>
                      
                        <option value=''>Sort By Price</option>
