@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { FaCarSide } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 

@@ -17,7 +17,7 @@ const MyCar = () => {
   }, [user, sort]);
 
   const fetchAllCars = async () => {
-    const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/cars/${user?.email}?sort=${sort}`);
+    const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/cars/${user?.email}?sort=${sort},{withCredentials : true}`)
     setCars(data);
   };
 
