@@ -21,7 +21,6 @@ const ExtraSection = () => {
       <p className="py-6">
        We are happily announced that we add some new services for your betterment like hotel booking, guide and many more with travel related.
       </p>
-      <button className="btn bg-gray-300">Explore More</button>
     </div>
   </div>
 </div>
