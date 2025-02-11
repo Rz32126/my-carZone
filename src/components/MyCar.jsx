@@ -75,7 +75,7 @@ const MyCar = () => {
           <Link to="/add-car" className="text-purple-600 font-bold btn">Add Car</Link>
         </div>
       ) : (
-        <div className="overflow-x-auto mt-5 w-11/12 mx-auto bg-lime-200 mb-5">
+        <div className="overflow-x-auto mt-5 w-11/12 mx-auto bg-blue-200 mb-5">
           <table className="table">
             <thead>
               <tr className="text-black">

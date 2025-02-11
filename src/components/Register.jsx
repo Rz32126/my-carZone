@@ -41,7 +41,7 @@ const Registration = () => {
   }
 
   return (
-    <div className='lg:w-5/12 mx-auto bg-green-300 mt-4 mb-4'>
+    <div className='lg:w-5/12 mx-auto bg-blue-300 mt-4 mb-4'>
         <div className='mx-7 px-5 py-12'>
 
           <p className='mt-3 text-xl text-center text-black font-bold '>
