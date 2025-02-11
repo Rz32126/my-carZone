@@ -9,7 +9,7 @@ import Slide from './Slide'
 export default function Carousel() {
   return (
     <div className='container px-6 py-10 mx-auto'>
-      <h1 className='text-2xl font-bold text-lime-500 text-center mb-2'>User Testimonials</h1>
+      <h1 className='text-3xl font-bold text-blue-500 text-center mb-5 mt-5'>User Testimonials</h1>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

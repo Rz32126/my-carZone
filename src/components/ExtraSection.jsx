@@ -4,7 +4,7 @@ const ExtraSection = () => {
     return (
         <div>
             <h1 className="text-3xl font-bold text-center mt-5 mb-5 text-blue-500">Explore Our Other Exclusive Services</h1>
-            <div className="hero bg-blue-300 mb-4 w-9/12 mx-auto">
+            <div className="hero bg-blue-300 mb-4 w-9/12 mx-auto rounded-md">
   <div className="hero-content flex-col lg:flex-row-reverse justify-center">
    <div className="flex-1">
    <img

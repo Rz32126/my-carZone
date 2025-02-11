@@ -6,7 +6,7 @@ const RecentListing = () => {
     return (
          <div>
             <h1 className="text-3xl text-center text-blue-950 font-bold mb-5 mt-5">Recent Listing</h1>
-                 <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-4">
+                 <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
             <div className="card card-compact hover:shadow-xl border border-gray-300">
               <figure>
                  <img
