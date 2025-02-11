@@ -58,9 +58,9 @@ const Navbar = () => {
         <li className="btn text-green-800 bg-blue-100"><Link to="/my-booking">My Bookings</Link></li>
         </ul>
       </div>
-      <button onClick={handleLogOut} className="ml-4 btn bg-red-300">Log out</button>
+      <button onClick={handleLogOut} className="ml-4 mr-4 btn bg-red-300">Log out</button>
       </> : <>
-      <Link to="/login" className="btn bg-lime-300">Login</Link>
+      <Link to="/login" className="mr-4 btn bg-lime-300">Login</Link>
       </>
     }
     
