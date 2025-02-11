@@ -5,7 +5,7 @@ import { FcOnlineSupport } from "react-icons/fc";
 const ChoosePage = () => {
     return (
        <div>
-            <h1 className="font-bold text-center text-2xl mt-3 text-blue-500">Why Choose Us ??</h1>
+            <h1 className="font-bold text-center text-3xl mt-5 text-blue-500">Why Choose Us ??</h1>
                 <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-3 mb-5 mt-5">
            <div className="card bg-blue-200 border-blue-800 border">
               <div className="card-body">

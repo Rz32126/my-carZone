@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Offer = () => {
     return (
         <div>
-            <h1 className="text-2xl text-center text-purple-700 font-bold mb-4">Special Offers</h1>
-         <div className="grid lg:grid-cols-2 grid-cols-1 mb-4 mt-3 gap-4">
+            <h1 className="text-3xl text-center text-blue-600 font-bold">Special Offers</h1>
+         <div className="grid lg:grid-cols-2 grid-cols-1 mb-5 mt-5 gap-4">
              <div className="card bg-base-100 image-full  shadow-xl inline-block transition-transform duration-300 hover:animate-bounce">
             <figure>
                  <img
